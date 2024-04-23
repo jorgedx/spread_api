@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_20_044853) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_23_044853) do
   create_table "spread_alerts", force: :cascade do |t|
     t.string "market"
     t.decimal "spread_value", precision: 20, scale: 10

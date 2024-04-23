@@ -39,7 +39,6 @@ RSpec.describe SpreadAlertsController, type: :controller do
       it 'returns specific market spread alert ' do
         params = { market: second_market}
         get :index, params: params
-        binding.pry
         expect(response).to have_http_status(:ok)
         expect(body.keys[0]).to eq(eth_clp_alert.market)
         expect(body.values[0].to_f).to eq(eth_clp_alert.spread_value.to_f)
@@ -94,7 +93,7 @@ RSpec.describe SpreadAlertsController, type: :controller do
         get :pooling, params: { market: market }
         expect(response).to have_http_status(:ok)
         spread_alert_value = body['alert_value'].to_f
-        spread_buda_value = body['current_buda_spread'].to_f
+        spread_buda_value = body["current_buda_spread"][market].to_f
         spread_difference = spread_alert_value - spread_buda_value
         expect(spread_difference > 0).to eq(true)
       end
@@ -104,7 +103,7 @@ RSpec.describe SpreadAlertsController, type: :controller do
         get :pooling, params: { market: market }
         expect(response).to have_http_status(:ok)
         spread_alert_value = body['alert_value'].to_f
-        spread_buda_value = body['current_buda_spread'].to_f
+        spread_buda_value = body["current_buda_spread"][market].to_f
         spread_difference = spread_alert_value - spread_buda_value
         expect(spread_difference < 0).to eq(true)
       end
