@@ -12,5 +12,10 @@
   * ruby 3.1.2-p20
   * Puma version: 6.4.2
     
-
+-- Supuestos
+- Se supone que solo se desea guardar una alerta por market.
+- Se supone que la entrega del resultado de la alerta en el pooling sea de:
+ *  1  : alerta mayor que spread calculado del mercado
+ *  0  : alerta igual al spread calculado del mercado
+ * -1 : alerta menor al spread calculado del mercado
 
